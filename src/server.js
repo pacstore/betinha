@@ -10,14 +10,10 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 app.use(cors());
 app.use(express.json());
-
-// frontend
 app.use(express.static(path.join(__dirname, "../public")));
 
-// api
 app.use("/api", chatRoutes);
 
-// health
 app.get("/health", (_, res) => {
   res.send("Betinha está online 🚀");
 });

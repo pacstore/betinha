@@ -1,3 +1,5 @@
+import { askAI } from "../services/ai.service.js";
+
 export async function chat(req, res) {
   try {
     const { message } = req.body;
@@ -8,9 +10,8 @@ export async function chat(req, res) {
 
     const reply = await askAI(message);
     res.json({ reply });
-
   } catch (err) {
-    console.error(err);
+    console.error("❌ ERRO CHAT:", err);
     res.status(500).json({ error: "Erro ao falar com o servidor" });
   }
 }
