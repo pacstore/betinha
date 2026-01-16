@@ -7,13 +7,21 @@
 </head>
 <body>
 
-<div class="app">
-  <header>🤖 Betinha</header>
+<div class="chat-container">
+  <header class="chat-header">
+    <h1>Betinha</h1>
+    <span>Assistente inteligente</span>
+  </header>
 
-  <main id="chat"></main>
+  <div id="messages" class="chat-messages"></div>
 
-  <form id="form">
-    <textarea id="input" placeholder="Digite sua mensagem..."></textarea>
+  <form id="chat-form" class="chat-input">
+    <textarea
+      id="input"
+      placeholder="Digite sua mensagem..."
+      rows="2"
+      required
+    ></textarea>
     <button type="submit">Enviar</button>
   </form>
 </div>

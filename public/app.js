@@ -1,16 +1,18 @@
-async function send() {
-  const input = document.getElementById("input");
-  const messages = document.getElementById("messages");
+const form = document.getElementById("chat-form");
+const input = document.getElementById("input");
+const messages = document.getElementById("messages");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault(); // 🚫 impede reload
 
   const text = input.value.trim();
   if (!text) return;
 
-  messages.innerHTML += `<div class="user"><b>Você:</b><br>${text}</div>`;
+  addMessage("user", text);
   input.value = "";
-  messages.scrollTop = messages.scrollHeight;
 
   try {
-    const res = await fetch("/api/chat", {
+    const res = await fetch("/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: text })
@@ -18,9 +20,16 @@ async function send() {
 
     const data = await res.json();
 
-    messages.innerHTML += `<div class="ai"><b>Betinha:</b><br>${data.reply}</div>`;
-    messages.scrollTop = messages.scrollHeight;
-  } catch {
-    messages.innerHTML += `<div class="ai">Erro ao falar com o servidor.</div>`;
+    addMessage("ai", data.reply || "Sem resposta da IA.");
+  } catch (err) {
+    addMessage("ai", "Erro ao falar com o servidor.");
   }
+});
+
+function addMessage(type, text) {
+  const div = document.createElement("div");
+  div.className = `message ${type}`;
+  div.textContent = text;
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
 }
