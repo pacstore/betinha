@@ -1,0 +1,20 @@
+{
+  "name": "betinha",
+  "version": "2.0.0",
+  "description": "Betinha 2.0 - Assistente inteligente com backend escalável",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node src/server.js",
+    "start": "node src/server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "node-fetch": "^3.3.2"
+  }
+}
