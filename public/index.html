@@ -8,22 +8,18 @@
 <body>
 
 <div class="chat-container">
-  <header class="chat-header">
-    <h1>Betinha</h1>
-    <span>Assistente inteligente</span>
-  </header>
+  <div class="chat-header">Betinha</div>
 
-  <div id="messages" class="chat-messages"></div>
+  <div class="chat-messages" id="messages"></div>
 
-  <form id="chat-form" class="chat-input">
+  <div class="chat-input">
     <textarea
       id="input"
       placeholder="Digite sua mensagem..."
-      rows="2"
-      required
+      rows="1"
     ></textarea>
-    <button type="submit">Enviar</button>
-  </form>
+    <button id="send">Enviar</button>
+  </div>
 </div>
 
 <script src="app.js"></script>
