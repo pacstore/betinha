@@ -1,14 +1,23 @@
 const messages = document.getElementById("messages");
 const input = document.getElementById("input");
-const sendBtn = document.getElementById("send");
+const form = document.getElementById("chat-form");
 
 function addMessage(text, type) {
-  const div = document.createElement("div");
-  div.className = type === "user" ? "user" : "ai";
+  const wrapper = document.createElement("div");
+  wrapper.className = `message ${type}`;
 
-  div.innerHTML = `<b>${type === "user" ? "Você" : "Betinha"}:</b>\n${text}`;
+  const author = document.createElement("div");
+  author.className = "author";
+  author.textContent = type === "user" ? "Você" : "Betinha";
 
-  messages.appendChild(div);
+  const bubble = document.createElement("div");
+  bubble.className = "bubble";
+  bubble.textContent = text;
+
+  wrapper.appendChild(author);
+  wrapper.appendChild(bubble);
+  messages.appendChild(wrapper);
+
   messages.scrollTop = messages.scrollHeight;
 }
 
@@ -18,6 +27,7 @@ async function sendMessage() {
 
   addMessage(text, "user");
   input.value = "";
+  input.style.height = "auto";
 
   try {
     const res = await fetch("/api/chat", {
@@ -29,17 +39,25 @@ async function sendMessage() {
     const data = await res.json();
     if (!res.ok) throw new Error();
 
-    addMessage(data.reply || "Sem resposta.", "ai");
+    addMessage(data.reply, "ai");
   } catch {
     addMessage("Erro ao falar com o servidor.", "ai");
   }
 }
 
-sendBtn.addEventListener("click", sendMessage);
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  sendMessage();
+});
 
 input.addEventListener("keydown", (e) => {
   if (e.key === "Enter" && !e.shiftKey) {
     e.preventDefault();
     sendMessage();
   }
+});
+
+input.addEventListener("input", () => {
+  input.style.height = "auto";
+  input.style.height = input.scrollHeight + "px";
 });

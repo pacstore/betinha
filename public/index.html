@@ -7,17 +7,21 @@
 </head>
 <body>
 
-<div class="chat">
-  <div class="messages" id="messages"></div>
+<div class="chat-container">
+  <header class="chat-header">
+    Betinha
+  </header>
 
-  <div class="input">
+  <main class="chat-messages" id="messages"></main>
+
+  <form class="chat-input" id="chat-form">
     <textarea
       id="input"
-      rows="2"
       placeholder="Digite sua mensagem..."
+      rows="1"
     ></textarea>
-    <button id="send">Enviar</button>
-  </div>
+    <button type="submit">Enviar</button>
+  </form>
 </div>
 
 <script src="app.js"></script>
