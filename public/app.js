@@ -3,10 +3,21 @@ const input = document.getElementById("input");
 const sendBtn = document.getElementById("send");
 
 function addMessage(text, type) {
-  const div = document.createElement("div");
-  div.className = `message ${type}`;
-  div.textContent = text;
-  messages.appendChild(div);
+  const wrapper = document.createElement("div");
+  wrapper.className = `message-wrapper ${type}`;
+
+  const author = document.createElement("div");
+  author.className = "message-author";
+  author.textContent = type === "user" ? "Você" : "Betinha";
+
+  const bubble = document.createElement("div");
+  bubble.className = `message ${type}`;
+  bubble.textContent = text;
+
+  wrapper.appendChild(author);
+  wrapper.appendChild(bubble);
+  messages.appendChild(wrapper);
+
   messages.scrollTop = messages.scrollHeight;
 }
 
@@ -45,7 +56,7 @@ input.addEventListener("keydown", (e) => {
   }
 });
 
-// auto-resize textarea
+// auto resize
 input.addEventListener("input", () => {
   input.style.height = "auto";
   input.style.height = input.scrollHeight + "px";
