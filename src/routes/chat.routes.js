@@ -1,8 +1,8 @@
-import { Router } from "express";
-import { chatController } from "../controllers/chat.controller.js";
+import express from "express";
+import { chat } from "../controllers/chat.controller.js";
 
-const router = Router();
+const router = express.Router();
 
-router.post("/chat", chatController);
+router.post("/chat", chat);
 
 export default router;
