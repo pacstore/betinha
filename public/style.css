@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #0f0f14;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  padding: 16px;
+  font-size: 20px;
+  font-weight: bold;
+  border-bottom: 1px solid #222;
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.message {
+  max-width: 70%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+
+.user {
+  align-self: flex-end;
+  background: #2563eb;
+}
+
+.bot {
+  align-self: flex-start;
+  background: #1f2937;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  padding: 16px;
+  border-top: 1px solid #222;
+}
+
+textarea {
+  flex: 1;
+  resize: none;
+  height: 48px;
+  border-radius: 8px;
+  border: none;
+  padding: 12px;
+  font-size: 14px;
+  outline: none;
+}
+
+button {
+  padding: 0 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #22c55e;
+  font-weight: bold;
+}
